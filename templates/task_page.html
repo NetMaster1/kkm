@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">
+            <!-- <button class="close" data-dismiss="alert">
+                                                    <small><sup>x</sup></small>
+                                                </button> -->
+            {{ message }}
+        </div>
+        {% endfor%}
+        {% endif%}
+    </div>
+
+
+
+    <form action="{% url 'task_page' %}" method='POST'>
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="user_name">Имя пользователя</label>
+            <input type="text" id="user_name" name="user_name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="user_password">Пароль</label>
+            <input type="password" id= "user_password" name="user_password" class="form-control" required>
+        </div>
+
+        <div class="row m-auto mt-3">
+        <input type="submit" value="Войти" class="btn btn-primary btn-block">
+        </div>
+    </form>
+
+        <br>
+        Response status: {{status_code}}
+        <br><br>
+        Response text: {{text}}
+        <br><br>
+        Response URL: {{url}}
+        <br><br>
+        UUID: {{uuid_number}}
+        <br><br>
+        JSON: {{json}}
+        
+
+
+</body>
+</html>
